@@ -37,14 +37,12 @@ wp-config.php
 # htaccess
 /.htaccess
 
-
-/.github
-
 _wpeprivate
 wp-content/blogs.dir
 wp-content/upgrade
 wp-content/object-cache.php
 wp-content/mysql.sql
+wp-content/mu-plugins/
 wp-content/mu-plugins/mu-plugin.php
 wp-content/mu-plugins/slt-force-strong-passwords.php
 wp-content/mu-plugins/wpengine-common
