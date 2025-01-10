@@ -4554,9 +4554,9 @@ add_action( 'bp_actions', 'bp_members_action_activate_account_custom' ); */
 	}
 	return $output_text;
 }
-add_filter( 'gettext', 'my_gettext_membership', 10, 3 ); */
+add_filter( 'gettext', 'my_gettext_membership', 10, 3 );
 
-/* function custom_redirect() {
+function custom_redirect() {
     global $wp;
 
     if( $wp->request == 'memberships-info' ) 
