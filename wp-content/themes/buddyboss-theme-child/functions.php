@@ -690,7 +690,7 @@ function add_custom_page_loader()
     </div>
 <?php
 }
-add_action('wp_head', 'add_custom_page_loader');
+//add_action('wp_head', 'add_custom_page_loader');
 
 function add_custom_page_loader_script()
 {
@@ -704,7 +704,7 @@ function add_custom_page_loader_script()
     </script>
     <?php
 }
-add_action('wp_footer', 'add_custom_page_loader_script');
+//add_action('wp_footer', 'add_custom_page_loader_script');
 
 
 function custom_breadcrumbs()
@@ -3735,7 +3735,7 @@ function custom_conditional_post_content( $atts ) {
 		}	
 	}	
     
-    if ( (is_user_logged_in() && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel()) || $isValidCode == true || $isFreeContent == true ) 
+    if ( is_user_logged_in() || $isValidCode == true || $isFreeContent == true ) // && function_exists('pmpro_hasMembershipLevel') && pmpro_hasMembershipLevel()
 	{
         // Display full post content for logged-in users
         the_content();
@@ -3758,7 +3758,7 @@ function custom_conditional_post_content( $atts ) {
 		<div id="purchase-option-section">
 			<input type="button" value="Purchase this article for $<?php echo $amount;?>" id="purchase_article">
 			<p class="div_seprator"> OR </p>
-			<input type="button" value="Become a Member for Unlimited Access" id="buy_article" onclick="location.href = '<?php echo site_url();?>/memberships-info//'">
+			<input type="button" value="Become a Member for Unlimited Access" id="buy_article" onclick="location.href = '<?php echo site_url();?>/register/'">
 		</div>
 	
 		<div id="custom-registration-form">
@@ -4519,7 +4519,7 @@ class Purchase_Report_List extends WP_List_Table
 
 //*************************** Start Paid Membership Plugin Changes *******************************//
 
-remove_action( 'bp_actions', 'bp_members_action_activate_account_custom' );
+/* remove_action( 'bp_actions', 'bp_members_action_activate_account_custom' );
 function bp_members_action_activate_account_custom() {
     if ( ! bp_is_current_component( 'activate' ) ) {
         return;
@@ -4544,9 +4544,9 @@ function bp_members_action_activate_account_custom() {
         bp_core_redirect( trailingslashit( bp_get_root_domain() . '/' . $bp->pages->activate->slug ) );
     }
     bp_core_add_message( __( 'Your account is now active!', 'buddyboss' ) );
-    bp_core_redirect( site_url().'/wp-login.php?redirect_to='.site_url().'/memberships-info/' );
+    bp_core_redirect( site_url().'/wp-login.php?redirect_to='.site_url().'/plan/' );
 }
-add_action( 'bp_actions', 'bp_members_action_activate_account_custom' );
+add_action( 'bp_actions', 'bp_members_action_activate_account_custom' ); */
 
 /* function my_gettext_membership( $output_text, $input_text, $domain ) {
 	if ( ! is_admin() && ( 'paid-memberships-pro' === $domain || strpos( $domain, 'pmpro-' ) !== false ) ) {
@@ -4556,17 +4556,10 @@ add_action( 'bp_actions', 'bp_members_action_activate_account_custom' );
 }
 add_filter( 'gettext', 'my_gettext_membership', 10, 3 ); */
 
-function custom_redirect() {
+/* function custom_redirect() {
     global $wp;
 
-    if( $wp->request == 'membership-account' ) {
-		
-		$membership_link = trailingslashit( bp_loggedin_user_domain()."membership_account" );
-		
-        wp_redirect( $membership_link );
-        exit;
-    }
-    if( $wp->request == 'membership-checkout' && !is_user_logged_in() ) 
+    if( $wp->request == 'memberships-info' ) 
 	{
 		$membership_link = trailingslashit(site_url()."/register" );
         wp_redirect( $membership_link );
@@ -4579,5 +4572,5 @@ function membership_levels_url_shortcode()
 {
 	return site_url().'/membership-levels/';	
 }
-add_shortcode('membership_levels_url', 'membership_levels_url_shortcode');
+add_shortcode('membership_levels_url', 'membership_levels_url_shortcode'); */
 //*************************** End Paid Membership Plugin Changes *******************************//

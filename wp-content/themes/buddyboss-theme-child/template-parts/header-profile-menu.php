@@ -124,7 +124,7 @@ if ( is_user_logged_in() ) {
 		<?php
 	}
 	
-	$membership_link = trailingslashit( bp_loggedin_user_domain()."membership_account" );
+	/* $membership_link = trailingslashit( bp_loggedin_user_domain()."membership_account" );
 	?>
 		<li class="menupop">
 			<a href="<?php echo esc_url( $membership_link ); ?>">
@@ -133,7 +133,7 @@ if ( is_user_logged_in() ) {
 			</a>
 		</li>
 	<?php 
-
+	 */
 	// Action - After buddypress setting menu.
 	do_action( THEME_HOOK_PREFIX . 'after_bb_setting_menu' );
 
